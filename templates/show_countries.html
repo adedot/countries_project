@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+{% block body %}
+  <ul class=countries>
+  {% for country in countries %}
+    <li><h2>{{ country.country }}</h2>{{ country.country_code }}
+  {% else %}
+    <li><em>Unbelievable.  No countries here so far</em>
+  {% endfor %}
+  </ul>
+{% endblock %}
