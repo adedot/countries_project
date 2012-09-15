@@ -11,5 +11,7 @@ metadata = MetaData()
 db_session = scoped_session(sessionmaker(autocommit=False,
                                          autoflush=False,
                                          bind=engine))
-def init_db():
+
+
+def init_database():
     metadata.create_all(bind=engine)

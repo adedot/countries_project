@@ -4,13 +4,13 @@ Created on Aug 12, 2012
 @author: adetolaadewodu
 '''
 
-from database import init_db
+from database import init_database
 from sqlalchemy import create_engine, MetaData
 from sqlalchemy import Table
 
-init_db()
-
+init_database()
 
 engine = create_engine( "mysql+pymysql://root:@localhost/pydb")
 metadata = MetaData(bind=engine)
+# Create database
 users = Table('users', metadata, autoload=True)

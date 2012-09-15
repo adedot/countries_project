@@ -8,12 +8,16 @@ from sqlalchemy.orm import mapper, relation, relationship
 from sqlalchemy.schema import ForeignKey
 from database import metadata, db_session
 
+
 schema = MetaData()
+
+# Create Tables
 
 users = Table('users', metadata,
     Column('id', Integer, primary_key=True),
     Column('name', String(50), unique=True),
     Column('email', String(120), unique=True))
+
 
 preference_table = Table('taste_preferences', schema,
                             Column('user_id', Integer, primary_key=True),
@@ -33,6 +37,9 @@ country_table = Table('countries', schema,
                             Column("latitude", Float),
                             Column("longitude", Float),
                             Column("country", String))
+
+
+#Create Objects
 
 class User(object):
     query = db_session.query_property()
@@ -72,6 +79,7 @@ class Country(object):
     def __unicode__(self):
         return self.country
 
+# Map Objects to Tables
 mapper(User, users)
 mapper(Preference, preference_table,properties={"countries":relation(Country,backref="taste_preferences")})
 mapper(Recommendation, recommendation_table,  properties={"countries":relation(Country,backref="recommendation")})
