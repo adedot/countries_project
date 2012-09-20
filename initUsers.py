@@ -13,4 +13,4 @@ init_database()
 engine = create_engine( "mysql+pymysql://root:@localhost/pydb")
 metadata = MetaData(bind=engine)
 # Create database
-users = Table('users', metadata, autoload=True)
+user = Table('user', metadata, autoload=True)
